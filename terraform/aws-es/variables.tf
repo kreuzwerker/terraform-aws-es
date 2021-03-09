@@ -169,31 +169,6 @@ variable "ebs_volume_type" {
   description = "Storage type of EBS volumes"
 }
 
-# security
-variable "domain_endpoint_options_enforce_https" {
-  type        = bool
-  default     = true
-  description = "Whether or not to require HTTPS"
-}
-
-variable "domain_endpoint_options_tls_security_policy" {
-  type        = string
-  default     = "Policy-Min-TLS-1-0-2019-07"
-  description = "The name of the TLS security policy that needs to be applied to the HTTPS endpoint"
-}
-
-variable "encrypt_at_rest_enabled" {
-  type        = bool
-  default     = false
-  description = "Whether to enable encryption at rest"
-}
-
-variable "encrypt_at_rest_kms_key_id" {
-  type        = string
-  default     = ""
-  description = "The KMS key ID to encrypt the Elasticsearch domain with. If not specified, then it defaults to using the AWS/Elasticsearch service KMS key"
-}
-
 # logs
 variable "logs_retention_in_days" {
   type        = number
@@ -217,6 +192,50 @@ variable "log_publishing_application_enabled" {
   type        = bool
   default     = false
   description = "Specifies whether log publishing option for ES_APPLICATION_LOGS is enabled or not"
+}
+
+# security
+variable "domain_endpoint_options_enforce_https" {
+  type        = bool
+  default     = true
+  description = "Whether or not to require HTTPS"
+}
+
+variable "domain_endpoint_options_tls_security_policy" {
+  type        = string
+  default     = "Policy-Min-TLS-1-0-2019-07"
+  description = "The name of the TLS security policy that needs to be applied to the HTTPS endpoint"
+}
+
+variable "node_to_node_encryption_enabled" {
+  type        = bool
+  default     = true
+  description = "Whether to enable node-to-node encryption"
+}
+
+variable "encrypt_at_rest_enabled" {
+  type        = bool
+  default     = false
+  description = "Whether to enable encryption at rest"
+}
+
+variable "encrypt_at_rest_kms_key_id" {
+  type        = string
+  default     = ""
+  description = "The KMS key ID to encrypt the Elasticsearch domain with. If not specified, then it defaults to using the AWS/Elasticsearch service KMS key"
+}
+
+# open distro security plugin
+variable "master_user_name" {
+  type        = string
+  default     = ""
+  description = "(Open Distro security plugin) Master user's username"
+}
+
+variable "master_user_password" {
+  type        = string
+  default     = ""
+  description = "(Open Distro security plugin) Master user's password"
 }
 
 # others
